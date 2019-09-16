@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
-
 public class Metode {
 	
 	public static final int BROJ_PROFESORA = 2;
@@ -17,13 +16,30 @@ public class Metode {
 	public Profesor[] profesor(Scanner scanner) {
 		
 		Profesor[] profesor = new Profesor[BROJ_PROFESORA];
+		String sifraProfesor = null;
+		String sifraProfesorr;
 		int j = 1;
 		
 		for(int i = 0; i < profesor.length; i++) {
-		
 		System.out.println("Unesite " + j + "." + " profesora: ");
-		System.out.println("Unesite šifru profesora: ");
-		String sifraProfesor = scanner.nextLine();
+        String msString = "Unesite šifru profesora:  ";
+    	
+        
+		
+		sifraProfesor = checkerString(scanner, msString ,sifraProfesor);
+		
+		
+//		
+//		while (sifraProfesor.length() == 0) {
+//			System.out.println("Prazno polje!");
+//			System.out.println("Unesite šifru profesora: ");
+//			sifraProfesor = scanner.nextLine();
+//		}
+			
+		
+	
+		
+		
 		System.out.println("Unesite ime profesora: ");
 		String imeProfesor = scanner.nextLine();
 		System.out.println("Unesite prezime profesora: ");
@@ -39,7 +55,24 @@ public class Metode {
 		return profesor;
 		
 	}
+	
+	public String checkerString(Scanner scanner, String message, String scanString) {
 		
+		
+		
+		System.out.println(message);
+		scanString = scanner.nextLine();
+		
+		while (scanString.length() == 0) {
+			
+			System.out.println("Prazno polje!");
+			System.out.println(message);
+			scanString = scanner.nextLine();
+		}
+		
+		return scanString;
+	}
+	
 	public Predmet[] predmet(Scanner scanner, Profesor[] profesorObjekt) {
 			
 		Predmet[] predmet = new Predmet[BROJ_PREDMETA];	
